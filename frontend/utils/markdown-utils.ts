@@ -1,7 +1,11 @@
-import fs from 'fs'
+import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
+
+export type FileContentBase = {
+  content: string
+}
 
 export async function convertToHtml(md: string) {
   const result = await remark().use(html).use(remarkGfm).process(md)
@@ -9,10 +13,14 @@ export async function convertToHtml(md: string) {
   return result.toString()
 }
 
-export async function loadFile(filePath: string) {
-  const content = await convertToHtml(
-    fs.readFileSync(filePath, { encoding: 'utf8' })
-  )
+export async function loadFile<MatterType>(
+  rawContent: string
+): Promise<FileContentBase & { matter: MatterType }> {
+  const matterResult = matter(rawContent)
+  const content = await convertToHtml(matterResult.content)
 
-  return { content }
+  return {
+    content,
+    matter: matterResult.data as MatterType,
+  }
 }
