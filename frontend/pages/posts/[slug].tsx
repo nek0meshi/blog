@@ -1,3 +1,4 @@
+import ArticleContent from '@/components/ArticleContent'
 import dayjs from '@/lib/dayjs'
 import * as postService from '@/services/post-service'
 
@@ -35,9 +36,7 @@ type Props = {
 const Slug = ({ content, title, date }: Props) => {
   return (
     <>
-      <small>{dayjs(date).format('YYYY-MM-DD')}</small>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <ArticleContent content={content} date={dayjs(date)} title={title} />
     </>
   )
 }
