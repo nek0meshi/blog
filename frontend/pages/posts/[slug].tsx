@@ -1,6 +1,7 @@
 import ArticleContent from '@/components/ArticleContent'
 import dayjs from '@/lib/dayjs'
 import * as postService from '@/services/post-service'
+import styles from './[slug].module.scss'
 
 export async function getStaticPaths() {
   return {
@@ -35,9 +36,9 @@ type Props = {
 
 const Slug = ({ content, title, date }: Props) => {
   return (
-    <>
+    <div className={styles.AppContainer}>
       <ArticleContent content={content} date={dayjs(date)} title={title} />
-    </>
+    </div>
   )
 }
 
