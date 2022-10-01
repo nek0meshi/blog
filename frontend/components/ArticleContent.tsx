@@ -1,5 +1,17 @@
+import styled from 'styled-components'
 import dayjs from '@/lib/dayjs'
-import styles from './ArticleContent.module.scss'
+
+const Article = styled.article`
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+`
 
 type Props = {
   content: string
@@ -9,11 +21,11 @@ type Props = {
 
 const ArticleContent = ({ content, title, date }: Props) => {
   return (
-    <article className={styles.ArticleContent}>
+    <Article>
       <small>{date.format('YYYY-MM-DD')}</small>
       <h1>{title}</h1>
       <div dangerouslySetInnerHTML={{ __html: content }} />
-    </article>
+    </Article>
   )
 }
 
