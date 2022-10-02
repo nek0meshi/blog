@@ -8,4 +8,27 @@ body {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+ul {
+  padding-inline-start: 17px;
+}
+
+ol {
+  padding-inline-start: 20px;
 }
