@@ -2,13 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import dayjs from '@/lib/dayjs'
 import * as markdownUtils from '@/utils/markdown-utils'
+import { MarkdownContent, PostMatter } from '@/types/Post'
 
-export type PostMatter = {
-  title: string
-  date: string
-}
-
-export async function loadMarkdown(slug: string) {
+export async function loadMarkdown(slug: string): Promise<MarkdownContent> {
   const fullPath = path.join(getPostDir(), `${slug}.md`)
 
   const rawContent = fs.readFileSync(fullPath, { encoding: 'utf8' })

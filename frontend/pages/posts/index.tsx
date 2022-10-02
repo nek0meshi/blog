@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import styled from 'styled-components'
+import MainContainer from '@/components/MainContainer'
 import * as postService from '@/services/post-service'
 
 export async function getStaticProps() {
@@ -8,6 +10,10 @@ export async function getStaticProps() {
     },
   }
 }
+
+const H1 = styled.h1`
+  margin-bottom: 1rem;
+`
 
 type Props = {
   slugs: string[]
@@ -24,10 +30,12 @@ const Index = ({ slugs }: Props) => {
     </ul>
   )
   return (
-    <section>
-      <h1>記事一覧</h1>
-      {links}
-    </section>
+    <MainContainer>
+      <section>
+        <H1>記事一覧</H1>
+        {links}
+      </section>
+    </MainContainer>
   )
 }
 

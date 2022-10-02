@@ -1,16 +1,22 @@
 import styled from 'styled-components'
 import dayjs from '@/lib/dayjs'
 
-const Article = styled.article`
+const Div = styled.div`
   h1 {
-    font-size: 2em;
+    margin: 1.4rem 0 1rem;
   }
+
   h2 {
-    font-size: 1.5em;
+    margin: 1.2rem 0 0.8rem;
   }
+
   h3 {
-    font-size: 1.2em;
+    margin: 1rem 0 0.7rem;
   }
+`
+
+const H1 = styled.h1`
+  margin-top: 0.5rem;
 `
 
 type Props = {
@@ -21,11 +27,11 @@ type Props = {
 
 const ArticleContent = ({ content, title, date }: Props) => {
   return (
-    <Article>
+    <article>
       <small>{date.format('YYYY-MM-DD')}</small>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </Article>
+      <H1>{title}</H1>
+      <Div dangerouslySetInnerHTML={{ __html: content }} />
+    </article>
   )
 }
 
