@@ -2,11 +2,13 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import MainContainer from '@/components/MainContainer'
 import * as postService from '@/services/post-service'
+import { PostMatter } from '@/types/Post'
 
 export async function getStaticProps() {
   return {
     props: {
-      slugs: postService.getSlugs(),
+      matters: await postService.getMatters(),
+      slugs: await postService.getSlugs(),
     },
   }
 }
@@ -16,10 +18,11 @@ const H1 = styled.h1`
 `
 
 type Props = {
+  matters: PostMatter[]
   slugs: string[]
 }
 
-const Index = ({ slugs }: Props) => {
+const Index = ({ matters, slugs }: Props) => {
   const links = (
     <ul>
       {slugs.map((slug) => (
@@ -30,7 +33,7 @@ const Index = ({ slugs }: Props) => {
     </ul>
   )
   return (
-    <MainContainer>
+    <MainContainer matters={matters}>
       <section>
         <H1>記事一覧</H1>
         {links}

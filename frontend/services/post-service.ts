@@ -13,10 +13,24 @@ export async function loadMarkdown(slug: string): Promise<MarkdownContent> {
   return {
     content: postData.content,
     matter: {
+      slug,
       title: postData.matter.title,
       date: dayjs(postData.matter.date).format('YYYY-MM-DD'),
     },
   }
+}
+
+export async function getMatters(): Promise<PostMatter[]> {
+  const slugs = getSlugs()
+
+  const matters: PostMatter[] = []
+  for (const slug of slugs) {
+    const content = await loadMarkdown(slug)
+
+    matters.push(content.matter)
+  }
+
+  return matters
 }
 
 export function getSlugs() {
