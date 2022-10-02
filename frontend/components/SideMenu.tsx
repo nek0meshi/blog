@@ -2,6 +2,8 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
+import SearchPostForm from './SearchPostForm'
+import useSearchPostForm from '@/hooks/use-search-post-form'
 
 const imageSize = 100
 
@@ -41,12 +43,6 @@ const StyleImage = styled(Image)`
 
 const ProfileText = styled.div`
   white-space: pre-wrap;
-`
-
-const SearchText = styled.input`
-  padding: 5px;
-  border: 1px solid #444;
-  border-radius: 5px;
 `
 
 const LatestLinkList = styled.ul`
@@ -96,6 +92,9 @@ const SideMenu = ({ matters }: Props) => {
       </li>
     ))
 
+  const { searchText, onChangeSearchText, onSubmitSearchText } =
+    useSearchPostForm()
+
   return (
     <Aside>
       <Section>
@@ -114,7 +113,11 @@ const SideMenu = ({ matters }: Props) => {
       </Section>
       <Section>
         <H2>Search</H2>
-        <SearchText type="search" />
+        <SearchPostForm
+          value={searchText}
+          onChange={onChangeSearchText}
+          onSubmit={onSubmitSearchText}
+        />
       </Section>
       <Section>
         <H2>Latest</H2>
