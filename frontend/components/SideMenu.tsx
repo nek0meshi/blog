@@ -41,6 +41,10 @@ const StyleImage = styled(Image)`
   border-radius: 50%;
 `
 
+const Pre = styled.pre`
+  white-space: pre-wrap;
+`
+
 const LatestLinkList = styled.ul`
   padding-inline-start: 0;
   font-size: 1.2rem;
@@ -60,14 +64,22 @@ type Props = {
 }
 
 const profileText = `
-This is a side menu.
-This is a side menu.
-This is a side menu.
-This is a side menu.
-This is a side menu.
+Webエンジニアのyushiです。
+関西の企業で自社サービスを開発しています。
+Backend・Frontendが主な専門範囲です。
 `
 
 const SideMenu = ({ matters }: Props) => {
+  const links = [
+    {
+      text: 'プロフィールページ',
+      href: 'https://nek0meshi.github.io/profile',
+    },
+  ].map((link) => (
+    <a href={link.href} key={link.text}>
+      {link.text}
+    </a>
+  ))
   const articles = matters
     // sortでは元配列を変更してしまうため、concatで事前にcloneする.
     .concat()
@@ -92,7 +104,10 @@ const SideMenu = ({ matters }: Props) => {
           width={imageSize}
           height={imageSize}
         />
-        <pre>{profileText}</pre>
+        <div>
+          <Pre>{profileText}</Pre>
+          {links}
+        </div>
       </Section>
       <Section>
         <H2>Search</H2>
