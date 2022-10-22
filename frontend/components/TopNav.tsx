@@ -7,11 +7,12 @@ const A = styled.a`
 `
 
 type Props = {
+  text: string
   href: string
 }
 
-const TopNav = ({ href }: Props) => {
-  return <A href={href}>Blog</A>
+const TopNav = ({ text, href }: Props) => {
+  return <A href={href}>{text}</A>
 }
 
 export default TopNav

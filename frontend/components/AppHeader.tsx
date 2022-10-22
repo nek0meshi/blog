@@ -9,10 +9,14 @@ const Header = styled.header`
   padding: 0 ${commonCss.VERTICAL_PADDING};
 `
 
-const AppHeader = () => {
+type Props = {
+  text: string
+}
+
+const AppHeader = ({ text }: Props) => {
   return (
     <Header>
-      <TopNav href="/" />
+      <TopNav text={text} href="/" />
     </Header>
   )
 }

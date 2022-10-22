@@ -59,6 +59,14 @@ type Props = {
   matters: PostMatter[]
 }
 
+const profileText = `
+This is a side menu.
+This is a side menu.
+This is a side menu.
+This is a side menu.
+This is a side menu.
+`
+
 const SideMenu = ({ matters }: Props) => {
   const articles = matters
     // sortでは元配列を変更してしまうため、concatで事前にcloneする.
@@ -84,7 +92,7 @@ const SideMenu = ({ matters }: Props) => {
           width={imageSize}
           height={imageSize}
         />
-        <p>This is a side menu.</p>
+        <pre>{profileText}</pre>
       </Section>
       <Section>
         <H2>Search</H2>
