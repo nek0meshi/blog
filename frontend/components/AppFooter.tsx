@@ -8,8 +8,12 @@ const Footer = styled.footer`
   height: 150px;
 `
 
-const AppFooter = () => {
-  return <Footer>©︎ 2022 NAME</Footer>
+type Props = {
+  text: string
+}
+
+const AppFooter = ({ text }: Props) => {
+  return <Footer>{text}</Footer>
 }
 
 export default AppFooter
