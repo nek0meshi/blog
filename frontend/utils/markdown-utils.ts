@@ -1,4 +1,5 @@
 import matter from 'gray-matter'
+import { convert } from 'html-to-text'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
@@ -11,6 +12,10 @@ export async function convertToHtml(md: string) {
   const result = await remark().use(html).use(remarkGfm).process(md)
 
   return result.toString()
+}
+
+export function convertToPlain(html: string) {
+  return convert(html)
 }
 
 export async function loadFile<MatterType>(
