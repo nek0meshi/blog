@@ -1,50 +1,64 @@
-import Link from 'next/link'
 import styled from 'styled-components'
+import ArticleListItem from '@/components/ArticleListItem'
 import MainContainer from '@/components/MainContainer'
 import * as postService from '@/services/post-service'
 import { PostMatter } from '@/types/Post'
 
-const H1 = styled.h1`
-  margin-bottom: 1rem;
+const ArticleList = styled.ul`
+  list-style-type: none;
+  padding-inline-start: 0;
 `
 
 export async function getStaticProps() {
+  const posts = await Promise.all(
+    (
+      await postService.getMatters()
+    )
+      .slice()
+      .sort((a, b) => (a.date < b.date ? 1 : -1))
+      .map(async (matter) => ({
+        content: (
+          await postService.loadMarkdown(matter.slug)
+        ).content.slice(0, 300),
+        matter,
+      }))
+  )
+
   return {
     props: {
-      matters: await postService.getMatters(),
+      posts,
     },
   }
 }
 
 type Props = {
-  matters: PostMatter[]
+  posts: {
+    content: string
+    matter: PostMatter
+  }[]
 }
 
-const Home = ({ matters }: Props) => {
-  const linkData = [
-    {
-      path: 'posts',
-      title: '記事一覧',
-    },
-  ]
+const Index = ({ posts }: Props) => {
+  const matters = posts.map(({ matter }) => matter)
   const links = (
-    <ul>
-      {linkData.map(({ path, title }) => (
-        <li key={path}>
-          <Link href={`/${path}`}>{title}</Link>
-        </li>
+    <ArticleList>
+      {posts.map(({ content, matter }) => (
+        <ArticleListItem
+          key={matter.slug}
+          slug={matter.slug}
+          title={matter.title}
+          date={matter.date}
+          content={content}
+        />
       ))}
-    </ul>
+    </ArticleList>
   )
 
   return (
     <MainContainer matters={matters}>
-      <section>
-        <H1>ブログ</H1>
-        {links}
-      </section>
+      <section>{links}</section>
     </MainContainer>
   )
 }
 
-export default Home
+export default Index
