@@ -2,7 +2,16 @@ import styled from 'styled-components'
 import ArticleListItem from '@/components/ArticleListItem'
 import MainContainer from '@/components/MainContainer'
 import * as postService from '@/services/post-service'
+import { Container } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
+
+const HeroContainer = styled(Container)`
+  height: 400px;
+  margin: 0 auto;
+  background-image: url('/hero.jpg');
+  background-position: center;
+  background-size: cover;
+`
 
 const ArticleList = styled.ul`
   list-style-type: none;
@@ -55,9 +64,12 @@ const Index = ({ posts }: Props) => {
   )
 
   return (
-    <MainContainer matters={matters}>
-      <section>{links}</section>
-    </MainContainer>
+    <>
+      <HeroContainer />
+      <MainContainer matters={matters}>
+        <section>{links}</section>
+      </MainContainer>
+    </>
   )
 }
 
