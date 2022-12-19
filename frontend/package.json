@@ -1,0 +1,46 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "export:gh-pages": "npm run clear:gh-pages && BASE_PATH='blog' npm run export && cp -r out ../docs",
+    "clear:gh-pages": "rm -rf ./out ../docs",
+    "lint": "npm run eslint && npm run prettier",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "eslint": "next lint",
+    "eslint:fix": "next lint --fix",
+    "prettier": "prettier -c .",
+    "prettier:fix": "prettier -w ."
+  },
+  "dependencies": {
+    "dayjs": "^1.11.5",
+    "gray-matter": "^4.0.3",
+    "html-to-text": "^8.2.1",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "remark": "^14.0.2",
+    "remark-gfm": "^3.0.1",
+    "remark-html": "^15.0.1",
+    "ress": "^5.0.2",
+    "sanitize.css": "^13.0.0",
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@types/html-to-text": "^8.1.1",
+    "@types/node": "18.7.18",
+    "@types/react": "18.0.20",
+    "@types/react-dom": "18.0.6",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.0.7",
+    "eslint": "8.23.1",
+    "eslint-config-next": "12.3.0",
+    "prettier": "^2.7.1",
+    "typescript": "4.8.3"
+  }
+}
