@@ -4,6 +4,7 @@ import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
 import SearchPostForm from './SearchPostForm'
 import useSearchPostForm from '@/hooks/use-search-post-form'
+import Link from 'next/link'
 
 const imageSize = 100
 
@@ -76,9 +77,9 @@ const SideMenu = ({ matters }: Props) => {
       href: 'https://nek0meshi.github.io/profile',
     },
   ].map((link) => (
-    <a href={link.href} key={link.text}>
+    <Link href={link.href} key={link.text}>
       {link.text}
-    </a>
+    </Link>
   ))
   const articles = matters
     // sortでは元配列を変更してしまうため、concatで事前にcloneする.

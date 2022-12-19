@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import React from 'react'
+import Link from 'next/link'
 
-const A = styled.a`
+const A = styled(Link)`
   text-decoration: none;
 `
 
