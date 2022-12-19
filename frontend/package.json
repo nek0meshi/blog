@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "export:gh-pages": "npm run clear:gh-pages && npm run export && cp -r out ../docs",
+    "export:gh-pages": "npm run clear:gh-pages && BASE_PATH='blog' npm run export && touch out/.nojekyll && cp -r out ../docs",
     "clear:gh-pages": "rm -rf ./out ../docs",
     "lint": "npm run eslint && npm run prettier",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
