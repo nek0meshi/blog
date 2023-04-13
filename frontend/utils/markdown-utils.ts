@@ -10,9 +10,9 @@ export async function convertToHtml(md: string) {
 }
 
 export async function loadFile(filePath: string) {
-  const contents = await convertToHtml(
+  const content = await convertToHtml(
     fs.readFileSync(filePath, { encoding: 'utf8' })
   )
 
-  return { contents }
+  return { content }
 }
