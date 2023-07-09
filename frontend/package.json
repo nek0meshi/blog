@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "export": "next build && next export",
+    "lint": "npm run eslint && npm run prettier",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "eslint": "next lint",
+    "eslint:fix": "next lint --fix",
     "prettier": "prettier -c .",
     "prettier:fix": "prettier -w ."
   },
