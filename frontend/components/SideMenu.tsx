@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
 import SearchPostForm from './SearchPostForm'
 import useSearchPostForm from '@/hooks/use-search-post-form'
@@ -12,17 +11,8 @@ const imageSize = 100
 const Aside = styled.aside`
   display: flex;
   flex-direction: column;
-  gap: 50px;
   flex-shrink: 0;
-  width: 240px;
-
-  @media (max-width: ${TABLET_MAX_WIDTH}) {
-    width: 180px;
-  }
-
-  @media (max-width: ${MOBILE_MAX_WIDTH}) {
-    width: 100%;
-  }
+  gap: 50px;
 
   * {
     margin: 0;
@@ -31,8 +21,10 @@ const Aside = styled.aside`
 
 const Section = styled.section`
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 15px;
+  text-align: center;
 `
 
 const H2 = styled.h2`
@@ -48,16 +40,24 @@ const ProfileText = styled.div`
 `
 
 const LatestLinkList = styled.ul`
+  width: 100%;
   padding-inline-start: 0;
   font-size: 1.2rem;
   list-style-type: none;
+  overflow: hidden;
 
   li {
-    margin-bottom: 10px;
+    width: 100%;
   }
 
   a {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
     text-decoration: none;
+    text-overflow: ellipsis;
   }
 `
 
@@ -68,10 +68,11 @@ Backend・Frontendが主な専門範囲です。
 `
 
 type Props = {
+  className?: string
   matters: PostMatter[]
 }
 
-const SideMenu = ({ matters }: Props) => {
+const SideMenu = ({ className, matters }: Props) => {
   const links = [
     {
       text: 'プロフィールページ',
@@ -98,7 +99,7 @@ const SideMenu = ({ matters }: Props) => {
     useSearchPostForm()
 
   return (
-    <Aside>
+    <Aside className={className}>
       <Section>
         <H2>Profile</H2>
         <StyleImage
