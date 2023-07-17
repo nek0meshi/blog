@@ -3,12 +3,20 @@ import dayjs from '@/lib/dayjs'
 import styles from '../styles/article-content.module.scss'
 
 const Div = styled.div`
+  * {
+    word-wrap: break-word;
+  }
+
   h1 {
     margin: 1.4rem 0 1rem;
   }
 
   h2 {
     margin: 3rem 0 0.8rem;
+
+    &:first-child {
+      margin-top: 0.5rem;
+    }
 
     + h3 {
       margin-top: 1rem;
@@ -33,9 +41,14 @@ const Div = styled.div`
     margin: 1rem 0;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   pre {
     background-color: #111;
     padding: 1rem;
+    overflow: scroll;
 
     code {
       color: #eee;
