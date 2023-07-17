@@ -11,7 +11,7 @@ const Layout = ({ children }: Props) => {
     <>
       <AppHeader text="Yushi's Tech Blog" />
       {children}
-      <AppFooter text="©︎ 2022 YUSHI WATANABE" />
+      <AppFooter text="©︎ 2022-2024 YUSHI WATANABE" />
     </>
   )
 }
