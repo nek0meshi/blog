@@ -1,6 +1,6 @@
-import styled from 'styled-components'
 import ArticleContent from '@/components/ArticleContent'
 import dayjs from '@/lib/dayjs'
+import MainContainer from '@/components/MainContainer'
 import * as postService from '@/services/post-service'
 
 export async function getStaticPaths() {
@@ -28,21 +28,6 @@ export async function getStaticProps({ params }: Params) {
   }
 }
 
-const MOBILE_MAX_WIDTH = '768px'
-const TABLET_MAX_WIDTH = '1024px'
-const ArticleContainer = styled.div`
-  width: ${TABLET_MAX_WIDTH};
-  margin: 0 auto;
-  padding: 0 15px;
-
-  @media (max-width: ${TABLET_MAX_WIDTH}) {
-    width: ${MOBILE_MAX_WIDTH};
-  }
-  @media (max-width: ${MOBILE_MAX_WIDTH}) {
-    width: 100%;
-  }
-`
-
 type Props = {
   content: string
   title: string
@@ -51,9 +36,9 @@ type Props = {
 
 const Slug = ({ content, title, date }: Props) => {
   return (
-    <ArticleContainer>
+    <MainContainer>
       <ArticleContent content={content} date={dayjs(date)} title={title} />
-    </ArticleContainer>
+    </MainContainer>
   )
 }
 

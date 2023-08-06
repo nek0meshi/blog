@@ -1,5 +1,11 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
+import styled from 'styled-components'
+import MainContainer from '@/components/MainContainer'
+
+const H1 = styled.h1`
+  margin-bottom: 1rem;
+`
 
 const Home: NextPage = () => {
   const linkData = [
@@ -19,10 +25,12 @@ const Home: NextPage = () => {
   )
 
   return (
-    <section>
-      <h1>ブログ</h1>
-      {links}
-    </section>
+    <MainContainer>
+      <section>
+        <H1>ブログ</H1>
+        {links}
+      </section>
+    </MainContainer>
   )
 }
 
