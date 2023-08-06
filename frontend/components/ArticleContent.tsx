@@ -46,13 +46,7 @@ const Div = styled.div`
   }
 
   pre {
-    background-color: #111;
-    padding: 1rem;
     overflow: scroll;
-
-    code {
-      color: #eee;
-    }
   }
 `
 
