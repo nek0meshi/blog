@@ -5,6 +5,7 @@ import {
   MOBILE_MAX_WIDTH,
   TABLET_MAX_WIDTH,
 } from '@/styles/common'
+import { PostMatter } from '@/types/Post'
 
 const Container = styled.div`
   display: flex;
@@ -26,14 +27,15 @@ const Container = styled.div`
 `
 
 type Props = {
+  matters: PostMatter[]
   children: React.ReactNode
 }
 
-const MainContainer = ({ children }: Props) => {
+const MainContainer = ({ children, matters }: Props) => {
   return (
     <Container>
       <main>{children}</main>
-      <SideMenu />
+      <SideMenu matters={matters} />
     </Container>
   )
 }
