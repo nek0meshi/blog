@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import { convertToPlain } from '@/utils/markdown-utils'
 
@@ -5,10 +6,16 @@ const Li = styled.li`
   margin-bottom: 3rem;
 `
 
-const StyledArticleLink = styled.a`
+const StyledArticleLinkContent = styled.div`
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  cursor: pointer;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const Title = styled.span`
@@ -53,11 +60,13 @@ const ArticleListItem = ({ slug, title, date, content }: Props) => {
 
   return (
     <Li key={slug}>
-      <StyledArticleLink href={'/posts/' + slug}>
-        <Date>{date}</Date>
-        <Title>{title}</Title>
-        <ContentBeginning>{contentText}</ContentBeginning>
-      </StyledArticleLink>
+      <Link href={'/posts/' + slug}>
+        <StyledArticleLinkContent>
+          <Date>{date}</Date>
+          <Title>{title}</Title>
+          <ContentBeginning>{contentText}</ContentBeginning>
+        </StyledArticleLinkContent>
+      </Link>
     </Li>
   )
 }

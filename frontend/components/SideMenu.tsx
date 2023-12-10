@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import styled from 'styled-components'
 import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
 import SearchPostForm from './SearchPostForm'
 import useSearchPostForm from '@/hooks/use-search-post-form'
+import { url } from '@/utils/config-utils'
 
 const imageSize = 100
 
@@ -76,9 +78,9 @@ const SideMenu = ({ matters }: Props) => {
       href: 'https://nek0meshi.github.io/profile',
     },
   ].map((link) => (
-    <a href={link.href} key={link.text}>
+    <Link href={link.href} key={link.text}>
       {link.text}
-    </a>
+    </Link>
   ))
 
   const articles = matters
@@ -88,7 +90,7 @@ const SideMenu = ({ matters }: Props) => {
     .slice(0, 5)
     .map(({ slug, title }) => (
       <li key={slug}>
-        <a href={'/posts/' + slug}>{title}</a>
+        <Link href={'/posts/' + slug}>{title}</Link>
       </li>
     ))
 
@@ -101,7 +103,7 @@ const SideMenu = ({ matters }: Props) => {
         <H2>Profile</H2>
         <StyleImage
           layout="fixed"
-          src="/profile.png"
+          src={url('/profile.png')}
           alt="profile image"
           width={imageSize}
           height={imageSize}
