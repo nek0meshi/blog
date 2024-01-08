@@ -4,11 +4,14 @@ import MainContainer from '@/components/MainContainer'
 import * as postService from '@/services/post-service'
 import { Container } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
+import { url } from '@/utils/config-utils'
+
+const heroBackgroundImageUrl = url('/hero.jpg')
 
 const HeroContainer = styled(Container)`
   height: 400px;
   margin: 0 auto;
-  background-image: url('/hero.jpg');
+  background-image: url(${heroBackgroundImageUrl});
   background-position: center;
   background-size: cover;
 `
