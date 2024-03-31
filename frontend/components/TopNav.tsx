@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -12,7 +13,11 @@ type Props = {
 }
 
 const TopNav = ({ text, href }: Props) => {
-  return <A href={href}>{text}</A>
+  return (
+    <Link href={href} passHref>
+      <A>{text}</A>
+    </Link>
+  )
 }
 
 export default TopNav
