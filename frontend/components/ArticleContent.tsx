@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import dayjs from '@/lib/dayjs'
+import styles from '../styles/article-content.module.scss'
 
 const Div = styled.div`
   h1 {
@@ -7,16 +8,44 @@ const Div = styled.div`
   }
 
   h2 {
-    margin: 1.2rem 0 0.8rem;
+    margin: 3rem 0 0.8rem;
+
+    + h3 {
+      margin-top: 1rem;
+    }
   }
 
   h3 {
-    margin: 1rem 0 0.7rem;
+    margin: 2.5rem 0 0.7rem;
+
+    + h4 {
+      margin-top: 0.7rem;
+    }
+  }
+
+  h4 {
+    margin: 2rem 0 0.5rem;
+  }
+
+  a,
+  img,
+  pre {
+    margin: 1rem 0;
+  }
+
+  pre {
+    background-color: #111;
+    padding: 1rem;
+
+    code {
+      color: #eee;
+    }
   }
 `
 
 const H1 = styled.h1`
   margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 `
 
 type Props = {
@@ -30,7 +59,10 @@ const ArticleContent = ({ content, title, date }: Props) => {
     <article>
       <small>{date.format('YYYY-MM-DD')}</small>
       <H1>{title}</H1>
-      <Div dangerouslySetInnerHTML={{ __html: content }} />
+      <Div
+        className={styles.ArticleContent}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </article>
   )
 }
