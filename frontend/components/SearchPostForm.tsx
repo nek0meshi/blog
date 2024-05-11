@@ -4,9 +4,11 @@ import styled from 'styled-components'
 const Form = styled.form`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `
 
 const SearchInput = styled.input`
+  width: 100%;
   margin-right: 10px;
   padding: 7px;
   border: 1px solid #444;
