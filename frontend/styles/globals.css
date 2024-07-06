@@ -38,3 +38,16 @@ hr {
   border-style: solid none none;
   border-color: #aaa;
 }
+
+code {
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  padding: 3px 7px;
+}
+
+pre {
+  & code {
+    border-radius: 0;
+  }
+}
