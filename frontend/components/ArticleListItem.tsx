@@ -6,7 +6,7 @@ const Li = styled.li`
   margin-bottom: 3rem;
 `
 
-const StyledArticleLinkContent = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -60,13 +60,11 @@ const ArticleListItem = ({ slug, title, date, content }: Props) => {
 
   return (
     <Li key={slug}>
-      <Link href={'/posts/' + slug}>
-        <StyledArticleLinkContent>
-          <Date>{date}</Date>
-          <Title>{title}</Title>
-          <ContentBeginning>{contentText}</ContentBeginning>
-        </StyledArticleLinkContent>
-      </Link>
+      <StyledLink href={'/posts/' + slug}>
+        <Date>{date}</Date>
+        <Title>{title}</Title>
+        <ContentBeginning>{contentText}</ContentBeginning>
+      </StyledLink>
     </Li>
   )
 }
