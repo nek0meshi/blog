@@ -64,9 +64,7 @@ const Search = ({ matters }: Props) => {
     .sort((a, b) => (a.date < b.date ? -1 : 1))
     .map(({ title, slug }) => (
       <li key={slug}>
-        <Link href={'/posts/' + slug}>
-          <a>{title}</a>
-        </Link>
+        <Link href={'/posts/' + slug}>{title}</Link>
       </li>
     ))
 

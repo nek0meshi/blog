@@ -103,7 +103,6 @@ const SideMenu = ({ className, matters }: Props) => {
       <Section>
         <H2>Profile</H2>
         <StyleImage
-          layout="fixed"
           src={url('/profile.png')}
           alt="profile image"
           width={imageSize}
