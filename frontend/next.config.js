@@ -2,6 +2,7 @@ const basePath = process.env.BASE_PATH ? '/' + process.env.BASE_PATH : ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   swcMinify: true,
   images: {
