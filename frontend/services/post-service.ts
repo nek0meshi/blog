@@ -36,6 +36,7 @@ export async function getMatters(): Promise<PostMatter[]> {
 export function getSlugs() {
   return fs
     .readdirSync(getPostDir())
+    .filter((fileName) => fileName !== 'README.md')
     .map((fileName) => path.parse(fileName).name)
 }
 
