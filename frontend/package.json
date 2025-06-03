@@ -13,7 +13,8 @@
     "eslint": "next lint",
     "eslint:fix": "next lint --fix",
     "prettier": "prettier -c .",
-    "prettier:fix": "prettier -w ."
+    "prettier:fix": "prettier -w .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "dayjs": "^1.11.5",
