@@ -48,6 +48,30 @@ const Div = styled.div`
   pre {
     overflow: scroll;
   }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid #f0f0f0;
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  th,
+  td {
+    min-width: 100px;
+    text-align: left;
+    padding: 8px 12px;
+  }
+
+  th {
+    background-color: #f0f0f0;
+  }
+
+  td {
+    border-bottom: 1px solid #ddd;
+  }
 `
 
 const H1 = styled.h1`
