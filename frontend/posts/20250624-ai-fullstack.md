@@ -1,6 +1,6 @@
 ---
-title: 技術の総合格闘技、生成AI時代のフルスタック開発
-date: 2026-06-24
+title: イベント「技術の総合格闘技、生成AI時代のフルスタック開発」
+date: 2025-06-24
 ---
 
 Link: https://findy-code.io/media/articles/event-admitai-250514
