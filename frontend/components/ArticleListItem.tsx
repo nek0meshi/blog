@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { convertToPlain } from '@/utils/markdown-utils'
+import Image from 'next/image'
 
 const Li = styled.li`
   margin-bottom: 3rem;
@@ -24,29 +25,11 @@ const Title = styled.span`
 `
 
 const Date = styled.small`
-  margin-bottom: 2px;
-  font-size: 0.6rem;
-  color: #777;
+  font-size: 0.8rem;
+  color: #888;
 `
 
-const ContentBeginning = styled.div`
-  position: relative;
-  max-height: 9.3rem;
-  overflow: hidden;
-
-  /** 下部のblur */
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.9)
-    );
-  }
-`
+const ContentBeginning = styled.div``
 
 type Props = {
   slug: string
@@ -61,9 +44,26 @@ const ArticleListItem = ({ slug, title, date, content }: Props) => {
   return (
     <Li key={slug}>
       <StyledLink href={'/posts/' + slug}>
-        <Date>{date}</Date>
         <Title>{title}</Title>
-        <ContentBeginning>{contentText}</ContentBeginning>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '4px',
+            alignItems: 'center',
+            marginBottom: '4px',
+          }}
+        >
+          <Image
+            src="/images/time.svg"
+            width="10"
+            height="10"
+            alt="time"
+            aria-hidden
+          />
+          <Date>{date}</Date>
+        </div>
+        <ContentBeginning>{contentText + '...'}</ContentBeginning>
       </StyledLink>
     </Li>
   )

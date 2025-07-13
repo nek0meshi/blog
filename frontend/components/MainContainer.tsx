@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { MOBILE_MAX_WIDTH, TABLET_MAX_WIDTH } from '@/styles/common'
 import SideMenu from '@/components/SideMenu'
-import { VERTICAL_PADDING, Container } from '@/styles/common'
+import { Container } from '@/styles/common'
 import { PostMatter } from '@/types/Post'
 
 const GAP = '50px'
@@ -13,7 +13,6 @@ const StyledContainer = styled(Container)`
   justify-content: space-between;
   flex-shrink: 0;
   gap: ${GAP};
-  padding: 0 ${VERTICAL_PADDING};
 `
 
 const StyledMain = styled.main`
